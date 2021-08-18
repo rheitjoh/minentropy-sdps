@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+cvxpy = "*"
+cvxopt = "*"
+mosek = "*"
+matplotlib = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
+
+[packages.ncpol2sdpa]
+git = "https://github.com/peterjbrown519/ncpol2sdpa"
+editable = true
