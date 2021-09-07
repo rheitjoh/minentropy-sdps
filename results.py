@@ -1,7 +1,3 @@
-"""
-This script contains the min-entropy results and code to draw them as plots.
-"""
-
 from math import sqrt
 
 import matplotlib.pyplot as plt
@@ -82,16 +78,30 @@ def draw_cglmp_3():
         bbox_inches="tight"
     )
 
-# dont use these numbers
-"""def draw_vazvid_2():
-    vazvid_local = [w, e/2 for w, e in {
+def draw_vazvid_2():
+    vazvid_local = dict((w, e[0]/2) for w, e in {
         '0.75': [3.088883184243907e-10], '0.8': [0.3880419793037799], 
         '0.81': [0.5030767117733151], '0.82': [0.6414543513465181], 
         '0.83': [0.8156003064239574], '0.84': [1.054367346289726], 
         '0.85': [1.4739298818965756], 
         '0.8535533905932737': [1.9971284232041318]
-    }.items()]"""
+    }.items())
+
+    fig, ax = plt.subplots()
+    ax.plot([k for k in vazvid_local.keys()], [v for v in vazvid_local.values()], "r.",
+            label=r"$H_\mathrm{min}(A|E)$")
+    ax.legend()
+    ax.xaxis.set_major_locator(ticker.MaxNLocator(7))
+    plt.xlabel(r"$\mathrm{eCHSH}_2$ win probability")
+    plt.ylabel("Entropy in bits")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    fig.savefig(
+        "/home/raphael/Documents/papers/masterthesis/thesis/figures/eCHSH_2_entropy_results.pdf",
+        bbox_inches="tight"
+    )
 
 
 if __name__ == "__main__":
-    draw_cglmp_3()
+    draw_vazvid_2()
